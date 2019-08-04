@@ -1,4 +1,4 @@
-package net.koziczak.dziennik;
+package net.koziczak.journal;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
