@@ -1,0 +1,23 @@
+
+
+
+wpis 
+	data 
+	tresc wpisu
+	tagi
+
+uzytkownik standard
+	login
+	password
+	lista wpisow
+	lista tagow
+
+uzytkownik admin
+	lista uzytkownikow
+	dane statystyczne
+	
+
+	
+sprawdz date time rejestracji (wydaje sie byc 2h do tylu)
+
+

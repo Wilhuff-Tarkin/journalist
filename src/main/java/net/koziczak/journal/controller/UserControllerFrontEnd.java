@@ -39,7 +39,7 @@ public class UserControllerFrontEnd {
         if (bindingResult.hasErrors()){
             return "register";
         }
-        // porwnanie haseł
+        // porownanie haseł
         if (!userDto.getPassword().equals(userDto.getPassword_repeat())){
             System.out.println(userDto.getPassword());
             System.out.println(userDto.getPassword_repeat());
