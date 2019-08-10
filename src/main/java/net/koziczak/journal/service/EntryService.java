@@ -21,13 +21,15 @@ public class EntryService {
     private UserRepository userRepository;
 
     @Autowired
-    public EntryService(EntryRepository entryRepository) {
+    public EntryService(EntryRepository entryRepository, LoginService loginService, UserRepository userRepository) {
         this.entryRepository = entryRepository;
+        this.loginService = loginService;
+        this.userRepository = userRepository;
     }
 
     // stworz nowe entry
-    public Entry createEntry (EntryDto entryDto){
-        Entry entry = new Entry(entryDto.getTitle(), entryDto.getEntry_text(), userRepository.getOne(1L));
+    public Entry createEntry (EntryDto entryDto, String email){
+        Entry entry = new Entry(entryDto.getTitle(), entryDto.getEntry_text(), userRepository.findFirstByEmail(email));
         return entryRepository.save(entry);
     }
 

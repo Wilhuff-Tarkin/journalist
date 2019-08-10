@@ -1,12 +1,11 @@
 package net.koziczak.journal.model.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Data
@@ -21,7 +20,8 @@ public class UserDto {
     private String email;
     @NotBlank
     @Size(min = 6)
-//    @Pattern(regexp = "[A-Z]+")
+//   TODO  - dodac np. @Pattern(regexp = "[A-Z]+")
+
     private String password;
     private String password_repeat;
 

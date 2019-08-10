@@ -2,12 +2,12 @@ package net.koziczak.journal.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import net.koziczak.journal.model.User;
-
+import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class EntryDto {
 
     @NotBlank

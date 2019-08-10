@@ -49,4 +49,11 @@ public class UserService {
         }
         return "zarejestrowano: " + user.toString();
     }
+
+//    public String myEmail (UserDto userDto){
+//
+//
+//    }
+
+
 }

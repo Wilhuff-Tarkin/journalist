@@ -1,33 +1,54 @@
 package net.koziczak.journal.controller;
 
 import net.koziczak.journal.model.Entry;
+import net.koziczak.journal.model.User;
 import net.koziczak.journal.model.dto.EntryDto;
 import net.koziczak.journal.service.EntryService;
+import net.koziczak.journal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RequestMapping("/")
 @Controller
 public class EntryController {
     private EntryService entryService;
+    private UserService userService;
 
     @Autowired
-    public EntryController(EntryService entryService) {
+    public EntryController(EntryService entryService, UserService userService) {
         this.entryService = entryService;
+        this.userService = userService;
+
     }
 
-    @PostMapping("/entry/{title}&{entry_text}")
-    public Entry createNewEntry(
-            @PathVariable String title, @PathVariable String entry_text
-    ){
-        return entryService.createEntry(new EntryDto(title, entry_text));
+    @PostMapping("/addEntry")
+    public String createNewEntry(@ModelAttribute EntryDto entryDto, @ModelAttribute User user)
+    {
+        entryService.createEntry(entryDto, user.getEmail());
+        return "redirect:/entry";
     }
 
-//    @GetMapping("/Entries")
-//    public List<Entry> getAllEntries(){
-//        return entryService.getAllEntries();
-//    }
+
+    //
+    @GetMapping("/entries")
+    public List<Entry> getAllEntries(){
+        return entryService.getAllEntries();
+    }
+
+
+
+    //
+    @GetMapping("/entry")
+    public String entry(Model model){
+        model.addAttribute("entryDto", new EntryDto());
+        model.addAttribute("entries", entryService.getAllEntries());
+
+        return "entry";
+    }
+
 
 
 }

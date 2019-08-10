@@ -44,7 +44,7 @@ public class User {
     }
     // dane generowane automatycznie
     private LocalDateTime registration_datetime = LocalDateTime.now();
-private boolean isActivated = true;
+    private boolean isActivated = true;
 
     @OneToMany(mappedBy = "user")
     private List<Entry> entries = new ArrayList<>();
